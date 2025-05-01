@@ -1,4 +1,7 @@
 myenv/
-.venv/
-__pycache__/
+venv/
 *.pyc
+__pycache__/
+*.db
+*.dylib
+*.dic
