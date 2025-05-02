@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: speech-app
+    runtime: python
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: "pip install -r requirements.txt && apt-get update && apt-get install -y ffmpeg"
+    startCommand: "gunicorn -b 0.0.0.0:$PORT --workers 2 streamlit_app:server"
+    envVars:
+      - key: COQUI_TOS_AGREED
+        value: y
+      - key: COQUI_AGREED
+        value: y
+      - key: COQUI_LICENSE_AGREED
+        value: y
+      - key: PYTHON_VERSION
+        value: 3.10.7
+      - key: PORT
+        sync: false
